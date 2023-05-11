@@ -1,16 +1,24 @@
 #!/usr/bin/env groovy
 
 node {
-    stage('checkout') {
+    stage("check out") {
+        echo "Git Repository checkout 합니다."
         checkout scm
     }
+
+    stage("java version") {
+        echo "Java Version 확인 합니다."
+        bat java -version
+    }
+
     stage('Test') {
         echo 'Testing....'
     }
-    stage('execute sh') {
-		sh "chmod 774 ./project.sh"
-        sh "./project.sh"
-    }
+
+//     stage('execute sh') {
+// 		sh "chmod 774 ./project.sh"
+//         sh "./project.sh"
+//     }
 }
 
 // node {
