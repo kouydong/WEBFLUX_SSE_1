@@ -19,7 +19,7 @@ node {
         bat "./gradlew bootjar"
     }
 
-    staging("Deploying the Cloud") {
+    stage("Deploying the Cloud") {
         bat 'ssh -i ~/.ssh/gcp-backend-key backend@34.64.98.92 rm -rf /home/backend/apipartner'
 //         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 mkdir -p /home/backend/apipartner'
 //         sh 'scp -i ~/.ssh/gcp-backend-key  build/libs/*.jar backend@34.64.240.208:/home/backend/apipartner'
