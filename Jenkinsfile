@@ -5,10 +5,11 @@ node {
         checkout scm
     }
 
-//     stage('check java') {
-//         sh "whoami"
-//         sh "java -version"
-//     }
+    stage('check java') {
+        sh "whoami"
+        sh "java -version"
+    }
+
 //
 //     stage('Gradle Build') {
 //         sh "chmod +x gradlew"
