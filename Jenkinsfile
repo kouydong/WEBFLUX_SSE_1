@@ -4,11 +4,24 @@ node {
     stage('checkout') {
         checkout scm
     }
-
-    stage('check java') {
-//         sh "whoami"
-        sh "java -version"
+    stage('Test') {
+        echo 'Testing....'
     }
+    stage('execute sh') {
+		sh "chmod 774 ./project.sh"
+        sh "./project.sh"
+    }
+}
+
+// node {
+//     stage('checkout') {
+//         checkout scm
+//     }
+//
+//     stage('check java') {
+// //         sh "whoami"
+//         sh "java -version"
+//     }
 
 //
 //     stage('Gradle Build') {
@@ -24,4 +37,4 @@ node {
 //         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 chmod +x /home/backend/apipartner/startApti.sh'
 //         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 /home/backend/apipartner/startApti.sh'
 //     }
-}
+// }
