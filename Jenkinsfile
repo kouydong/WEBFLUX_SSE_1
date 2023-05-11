@@ -2,13 +2,13 @@
 
 node {
     stage("check out") {
-        echo "Git Repository checkout 합니다."
+        echo "Checking out from Git Repository"
         checkout scm
     }
 
     stage("java version") {
-        echo "Java Version 확인 합니다."
-        bat java -version
+        echo "Checking out for Java version"
+        bat "java -version"
     }
 
     stage('Test') {
