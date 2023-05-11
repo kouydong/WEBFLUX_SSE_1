@@ -1,0 +1,26 @@
+#!/usr/bin/env groovy
+
+node {
+    stage('checkout') {
+        checkout scm
+    }
+
+    stage('check java') {
+        sh "whoami"
+        sh "java -version"
+    }
+
+    stage('Gradle Build') {
+        sh "chmod +x gradlew"
+        sh "./gradlew clean build -x test -PprjSystem=DEV -PprjBuildNumber=${BUILD_NUMBER}"
+    }
+    // PARTNER-PARKING 설정 서버 확인 필요.
+    stage('deploy') {
+        sh 'ssh -i ~/.ssh/gcp-backend-key backend@34.64.98.92  rm -rf /home/backend/apipartner'
+        sh 'ssh -i ~/.ssh/gcp-backend-key backend@34.64.98.92  mkdir -p /home/backend/apipartner'
+        sh 'scp -i ~/.ssh/gcp-backend-key build/libs/*.jar backend@34.64.98.92:/home/backend/apipartner'
+        sh 'scp -i ~/.ssh/gcp-backend-key startApti_Prod.sh backend@34.64.98.92:/home/backend/apipartner'
+        sh 'ssh -i ~/.ssh/gcp-backend-key backend@34.64.98.92  chmod +x /home/backend/apipartner/startApti_Prod.sh'
+        sh 'ssh -i ~/.ssh/gcp-backend-key backend@34.64.98.92  /home/backend/apipartner/startApti_Prod.sh'
+    }
+}
