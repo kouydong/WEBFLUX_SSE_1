@@ -8,7 +8,8 @@ node {
 
     stage("java version") {
         echo "Checking out for Java version"
-        bat "java -version"
+//         bat "java -version"
+        sh "java -version"
     }
 
     stage('Test') {
