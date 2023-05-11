@@ -6,6 +6,7 @@ node {
         checkout scm
     }
 
+
     stage("Java Version") {
         echo "Checking out for Java version"
         bat "java -version"
@@ -16,9 +17,16 @@ node {
         bat "./gradlew clean"
         echo "Building the jar"
         bat "./gradlew bootjar"
-//         bootjar -x test "
     }
 
+    staging("Deploying the Cloud") {
+        bat 'ssh -i ~/.ssh/gcp-backend-key backend@34.64.98.92 rm -rf /home/backend/apipartner'
+//         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 mkdir -p /home/backend/apipartner'
+//         sh 'scp -i ~/.ssh/gcp-backend-key  build/libs/*.jar backend@34.64.240.208:/home/backend/apipartner'
+//         sh 'scp -i ~/.ssh/gcp-backend-key  startApti.sh backend@34.64.240.208:/home/backend/apipartner'
+//         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 chmod +x /home/backend/apipartner/startApti.sh'
+//         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 /home/backend/apipartner/startApti.sh'
+    }
 
 
 //     stage('execute sh') {
