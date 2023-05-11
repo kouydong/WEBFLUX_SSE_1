@@ -1,19 +1,22 @@
 #!/usr/bin/env groovy
 
 node {
-    stage("check out") {
+    stage("Check Out") {
         echo "Checking out from Git Repository"
         checkout scm
     }
 
-    stage("java version") {
+    stage("Java Version") {
         echo "Checking out for Java version"
         bat "java -version"
     }
 
-    stage('Test') {
-        echo 'Testing....'
-        bat "project.bat"
+    stage('Gradle Building ') {
+        echo 'Cleaning the repository'
+        bat "./gradlew clean"
+        echo "Building the jar"
+        bat "./gradlew bootjar"
+//         bootjar -x test "
     }
 
 
