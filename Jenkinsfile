@@ -8,13 +8,15 @@ node {
 
     stage("java version") {
         echo "Checking out for Java version"
-//         bat "java -version"
-        sh "java -version"
+        bat "java -version"
     }
 
     stage('Test') {
         echo 'Testing....'
+        bat "project.bat"
     }
+
+
 
 //     stage('execute sh') {
 // 		sh "chmod 774 ./project.sh"
