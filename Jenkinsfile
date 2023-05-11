@@ -6,7 +6,7 @@ node {
     }
 
     stage('check java') {
-        sh "whoami"
+//         sh "whoami"
         sh "java -version"
     }
 
