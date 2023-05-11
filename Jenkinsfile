@@ -20,7 +20,7 @@ node {
     }
 
     stage("Deploying the Cloud") {
-        bat "ssh -i C:\\Users\\kouyd\\.ssh/gcp-backend-key backend@34.64.98.92 mkdir /home/backend/test"
+        bat "ssh -i C:\\Users\\kouyd\\.ssh/gcp-backend-key backend@34.64.98.92 mkdir -p /home/backend/test"
 //         sh 'ssh -i ~/.ssh/gcp-backend-key  backend@34.64.240.208 mkdir -p /home/backend/apipartner'
 //         sh 'scp -i ~/.ssh/gcp-backend-key  build/libs/*.jar backend@34.64.240.208:/home/backend/apipartner'
 //         sh 'scp -i ~/.ssh/gcp-backend-key  startApti.sh backend@34.64.240.208:/home/backend/apipartner'
