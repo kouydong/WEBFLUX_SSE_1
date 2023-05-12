@@ -21,7 +21,7 @@ node {
 
     stage("Deploying the Cloud") {
         echo "Deploying the Cloud"
-        sh "ssh -i C:\\Users\\kouyd\\.ssh\\gcp-backend-key backend@34.64.98.92 mkdir -p /home/backend/test"
+        sh "ssh -i C:\\Users\\kouyd\\.ssh\\gcp-backend-key backend@34.64.98.92 mkdir -p /home/backend/test2"
 
 
 //         sudo mkdir -p /home/backend/test"
